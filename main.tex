@@ -1,8 +1,4 @@
-% Exact LaTeX document with instruction prompt lines removed
-% Compile with pdfLaTeX. Place member pictures in the same folder if required.
-
 \documentclass[11pt,a4paper]{article}
-
 \usepackage[a4paper,left=2.0cm,right=2.0cm,top=1.55cm,bottom=1.55cm]{geometry}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
@@ -17,14 +13,10 @@
 \usetikzlibrary{arrows.meta,positioning}
 \usepackage{setspace}
 
-% -------------------------------------------------
-% COLOURS
-% -------------------------------------------------
+
 \definecolor{TitleBlue}{RGB}{61,103,154}
 
-% -------------------------------------------------
-% GENERAL SETTINGS
-% -------------------------------------------------
+
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0pt}
 \renewcommand{\arraystretch}{1.0}
@@ -37,20 +29,18 @@
     {\sffamily\bfseries\color{TitleBlue}\fontsize{16}{19}\selectfont #1}%
 }
 
-\newcommand{\answerbox}[2][3.0cm]{%
-    \vspace{2pt}
+\newcommand{\answerbox}[1]{%
+    \vspace{2pt}%
     \noindent
     \fbox{%
-        \begin{minipage}[t][#1][t]{\dimexpr\textwidth-2\fboxsep-2\fboxrule\relax}
-            \vspace{1mm}
-            \itshape #2
-        \end{minipage}
-    }
+        \begin{minipage}[t]{\dimexpr\textwidth-2\fboxsep-2\fboxrule\relax}
+            \vspace{2mm}
+            \itshape #1\par
+            \vspace{2mm}
+        \end{minipage}%
+    }%
 }
 
-% -------------------------------------------------
-% HEADER / FOOTER
-% -------------------------------------------------
 \pagestyle{fancy}
 \fancyhf{}
 \renewcommand{\headrulewidth}{0pt}
@@ -72,30 +62,26 @@
 \setlength{\headsep}{23pt}
 \setlength{\footskip}{24pt}
 
-% -------------------------------------------------
-% PAGE 1
-% -------------------------------------------------
 \begin{document}
 
 \vspace*{4mm}
 
 \bluebigheading{PROJECT AND TEAM INFORMATION}
 
-\vspace{13mm}
+\vspace{10mm}
 
 \blueheading{Project Title}
 
 \vspace{2mm}
 
-\answerbox[1.0cm]{Intelligent Traffic Optimization System}
+\answerbox{Intelligent Traffic Optimization System}
 
-\vspace{13mm}
+\vspace{10mm}
 
 \blueheading{Student / Team Information}
 
 \vspace{2mm}
 
-% Team information table
 \noindent
 \begin{tabularx}{\textwidth}{|>{\RaggedRight\arraybackslash}p{0.38\textwidth}|>{\RaggedRight\arraybackslash}X|}
 \hline
@@ -112,54 +98,57 @@
 \end{minipage}
 \\
 \hline
-\begin{minipage}[t][3.25cm][t]{\linewidth}
-\vspace{1.5mm}
+\begin{minipage}[t]{\linewidth}
+\vspace{2mm}
 \textbf{Team member 1 (Team Lead)}\\[-1mm]
 \textit{(Last Name, name: student ID: email, picture):}
-\vspace{2.0cm}
+\vspace{2mm}
 \end{minipage}
 &
-\begin{minipage}[t][3.25cm][t]{\linewidth}
-\vspace{1.5mm}
+\begin{minipage}[t]{\linewidth}
+\vspace{2mm}
 \textit{Akshita -- 2510012193}\\
 \textit{akshitachourdhary8923@gmail.com}
 
 \vspace{2mm}
 \includegraphics[width=3.0cm,height=1.5cm,keepaspectratio]{member1.png}
+\vspace{2mm}
 \end{minipage}
 \\
 \hline
-\begin{minipage}[t][3.25cm][t]{\linewidth}
-\vspace{1.5mm}
+\begin{minipage}[t]{\linewidth}
+\vspace{2mm}
 \textbf{Team member 2}\\[-1mm]
 \textit{(Last Name, name: student ID: email, picture):}
-\vspace{2.0cm}
+\vspace{2mm}
 \end{minipage}
 &
-\begin{minipage}[t][3.25cm][t]{\linewidth}
-\vspace{1.5mm}
+\begin{minipage}[t]{\linewidth}
+\vspace{2mm}
 \textit{Singh, Vaani -- 2510360148}\\
 \textit{vaanisingh56@gmail.com}
 
 \vspace{2mm}
 \includegraphics[width=3.0cm,height=1.5cm,keepaspectratio]{member2.png}
+\vspace{2mm}
 \end{minipage}
 \\
 \hline
-\begin{minipage}[t][3.25cm][t]{\linewidth}
-\vspace{1.5mm}
+\begin{minipage}[t]{\linewidth}
+\vspace{2mm}
 \textbf{Team member 3}\\[-1mm]
 \textit{(Last Name, name: student ID: email, picture):}
-\vspace{2.0cm}
+\vspace{2mm}
 \end{minipage}
 &
-\begin{minipage}[t][3.25cm][t]{\linewidth}
-\vspace{1.5mm}
+\begin{minipage}[t]{\linewidth}
+\vspace{2mm}
 \textit{Yadav, Panshu -- 2510350036}\\
 \textit{Panshu.yadav22@gmail.com}
 
 \vspace{2mm}
 \includegraphics[width=3.0cm,height=1.5cm,keepaspectratio]{member3.png}
+\vspace{2mm}
 \end{minipage}
 \\
 \hline
@@ -167,67 +156,60 @@
 
 \newpage
 
-% -------------------------------------------------
-% PAGE 2
-% -------------------------------------------------
-
 \bluebigheading{PROPOSAL DESCRIPTION }
 
-\vspace{7mm}
+\vspace{6mm}
 
 \blueheading{Motivation }
 
 \vspace{2mm}
 
-\answerbox[5.4cm]{Urban traffic congestion is a growing problem, especially at intersections controlled by fixed-time signals that allocate green light duration without regard to actual traffic conditions. This leads to unnecessary waiting time, increased fuel consumption, and pollution when vehicles idle at red lights for roads with little or no traffic, while congested roads remain stuck waiting their turn. As vehicle numbers rise faster than road infrastructure can expand, static signal timing becomes increasingly inefficient. An intelligent traffic optimization system that dynamically adjusts green light duration based on real-time vehicle count can significantly reduce congestion, cut average waiting time, lower fuel wastage, and minimize unnecessary stopping at near-empty roads. Solving this problem is important not only for daily commuter convenience but also for reducing carbon emissions and improving overall urban mobility and safety, particularly by allowing priority handling for emergency vehicles.}
+\answerbox{The majority of urban intersections currently feature pre-set timing schedules for controlling traffic signals. As such, drivers often find themselves waiting at a red light for no traffic to pass on the crossroad while wasting fuel or causing congestion on the roadways. Space is a premium in most urban areas, and it cannot be expanded to meet the growing demand; therefore, transportation engineers should explore opportunities to optimize the usage of the available road space. The proposed project aims to develop a dynamic signal control simulation that can accurately apportion traffic intervals to roads based on the volume of traffic and provide priority access to emergency vehicles.}
 
-\vspace{7mm}
+\vspace{6mm}
 
 \blueheading{State of the Art / Current solution }
 
 \vspace{2mm}
 
-\answerbox[4.2cm]{Most traffic signals currently in use operate on fixed-time cycles, where each road is given a pre-set green light duration regardless of actual traffic volume. Some modern systems use basic sensors or timers to make minor adjustments, but they generally lack real-time, data-driven decision-making. A few advanced smart-city deployments use camera-based AI vehicle detection integrated with adaptive signal control, but these solutions are costly and not widely implemented, especially in developing regions. As a result, most intersections still suffer from inefficient timing, leading to congestion at high-traffic roads and wasted green time at low-traffic roads.}
+\answerbox{The majority of current traffic signals are managed by simple pre-set timing schedules that do not account for prevailing traffic conditions. A few modern traffic lights employ simple sensor plates or timers to create slightly more optimized solutions that operate on a per-intersection level. More advanced solutions utilize high-resolution cameras and artificial intelligence to monitor traffic in real-time and adjust signal timings accordingly. However, such solutions are extremely expensive to install and maintain and can only be afforded in advanced countries. As such, the majority of traffic lights continue to utilize primitive timing schedules that do not account for traffic conditions, causing preventable bottlenecks.}
 
-\vspace{7mm}
+\vspace{6mm}
 
 \blueheading{Project Goals and Milestones }
 
 \vspace{2mm}
 
-\answerbox[7.6cm]{\textbf{General Goals:} Detect and count the number of vehicles waiting at each road of an intersection; calculate real-time traffic density per road; dynamically optimize green signal duration based on that density; prioritize roads with the highest traffic volume or emergency vehicles; simulate the traffic light system and compare its performance against fixed-time signals.
+\answerbox{\textbf{General Goals:} Develop an intersection control simulation that tracks vehicle volume per lane, calculates road congestion on the fly, dynamically adjusts green intervals, and provides priority clearance for emergency vehicles.
 
 \vspace{2mm}
 \textbf{Milestones:}
 \begin{enumerate}[leftmargin=5mm, itemsep=0.3mm, parsep=0pt, topsep=1mm]
-    \item Design the vehicle detection and counting module.
-    \item Implement traffic density calculation logic.
-    \item Build the signal timing optimization algorithm using appropriate data structures (queues, priority queues, graphs).
-    \item Develop the traffic light simulation module.
-    \item Integrate all modules into a working end-to-end system.
-    \item Evaluate results and compare performance against fixed-time signal systems.
+    \item Milestone 1: Complete the input module that simulates arrival rates and counts vehicles per lane.
+    \item Milestone 2: Implement logic to calculate real-time traffic volume and density percentages for each road.
+    \item Milestone 3: Construct core decision algorithms utilizing Queues, Priority Queues, and Graphs.
+    \item Milestone 4: Design and implement the simulation engine to manage intersection cycle flow.
+    \item Milestone 5: Integrate all software components in C++ to build a unified simulation testbed.
+    \item Milestone 6: Benchmark dynamic timing performance against standard pre-set cycles.
 \end{enumerate}}
 
 \newpage
-
-% -------------------------------------------------
-% PAGE 3
-% -------------------------------------------------
 
 \blueheading{Project Approach }
 
 \vspace{2mm}
 
-\answerbox[6.3cm]{The system will be developed in \textbf{C++} using an object-oriented design with classes (\textit{TrafficSignal}, \textit{Road}, \textit{Vehicle}) to simulate intersection traffic. Core functionality is built on structured algorithms and data structures:
+\answerbox{The project will be implemented in C++ using an object-oriented paradigm centered around \textit{TrafficSignal}, \textit{Road}, and \textit{Vehicle} classes. Key algorithms are built directly upon classical data structures:
 \begin{itemize}[leftmargin=5mm, itemsep=0.4mm, parsep=0pt, topsep=1.5mm]
-    \item \textbf{Queue:} Holds waiting vehicles sequentially per lane at each traffic light.
-    \item \textbf{Priority Queue:} Decides next green signal by prioritizing highest density and emergency vehicles.
-    \item \textbf{Graph Structure:} Models the road network topology and interconnected intersections.
-    \item \textbf{Stack \& Linked List:} Logs historical signal state events (Stack) and maintains live vehicle records dynamically (Linked List).
-    \item \textbf{Arrays \& Control Loops:} Tracks vehicle tallies across roads and executes real-time timing updates.
+    \item \textbf{Queue (FIFO):} Holds waiting vehicles sequentially per lane and releases them in their order of arrival when signaled green.
+    \item \textbf{Priority Queue:} Ranks incoming road approaches based on live vehicle density and emergency flags to decide which road gets the next green phase.
+    \item \textbf{Graph Structure:} Models the interconnected road network topology and intersection junctions as vertices and directed edges.
+    \item \textbf{Stack:} Logs signal transition history chronologically, enabling state review and event tracing.
+    \item \textbf{Linked List:} Dynamically manages in-memory records of active vehicles entering and departing the intersection.
+    \item \textbf{Arrays \& Control Loops:} Tracks vehicle counts per approach and drives the core simulation execution loop.
 \end{itemize}}
 
-\vspace{8mm}
+\vspace{6mm}
 
 \blueheading{System Architecture (High Level Diagram)}
 
@@ -235,7 +217,7 @@
 
 \noindent
 \fbox{%
-    \begin{minipage}[t][7.8cm][t]{\dimexpr\textwidth-2\fboxsep-2\fboxrule\relax}
+    \begin{minipage}[t]{\dimexpr\textwidth-2\fboxsep-2\fboxrule\relax}
         \vspace{3mm}
         \centering
         \begin{tikzpicture}[
@@ -247,17 +229,14 @@
                        font=\sffamily\footnotesize},
             arr/.style={-{Stealth[length=2mm]}, thick}
         ]
-            % Row 1 -- detection / counting / density
             \node[box] (detect)  at (0,4)   {Module 1\\Vehicle Detection};
             \node[box] (count)   at (4.2,4) {Module 2\\Vehicle Counting};
             \node[box] (density) at (8.4,4) {Module 3\\Traffic Density\\Calculation};
 
-            % Row 2 -- optimization / simulation / results
             \node[box] (signal)  at (8.4,2) {Module 4\\Signal Timing\\Optimization};
             \node[box] (sim)     at (4.2,2) {Module 5\\Traffic Light\\Simulation};
             \node[box] (results) at (0,2)   {Module 6\\Results \&\\Comparison};
 
-            % Row 3 -- supporting data structures
             \node[ds] (graph) at (0,0.3)   {Graph\\(road network)};
             \node[ds] (queue) at (4.2,0.3) {Queue\\(per-road counts)};
             \node[ds] (pq)    at (8.4,0.3) {Priority Queue\\(road priority)};
@@ -276,42 +255,44 @@
 
         \vspace{3mm}
         {\itshape\footnotesize Roads and intersections are modeled as a \textbf{Graph}; each road's waiting vehicles are held in a \textbf{Queue}; the \textbf{Priority Queue} selects which road gets the green signal (highest traffic / emergency vehicles first); a \textbf{Stack} logs recent signal events and a \textbf{Linked List} tracks live vehicle records.}
+        \vspace{2mm}
     \end{minipage}%
 }
 
-\vspace{8mm}
+\vspace{6mm}
 
 \blueheading{Project Outcome / Deliverables }
 
 \vspace{2mm}
 
-\answerbox[4.2cm]{The final project outcomes comprise a fully functional and benchmarked optimization system:
+\answerbox{The deliverables produced as part of the project include:
 \begin{itemize}[leftmargin=5mm, itemsep=0.4mm, parsep=0pt, topsep=1.5mm]
-    \item \textbf{C++ Simulation System:} Software dynamically allocating green times based on simulated live densities and emergency overrides.
-    \item \textbf{Modular Source Code:} Well-commented codebase containing implementations of Queues, Priority Queues, Stacks, and Graphs.
-    \item \textbf{Comparative Benchmark Report:} Quantitative analysis demonstrating reductions in average wait times, fuel usage, and idle periods versus fixed-time signals.
-    \item \textbf{System Documentation:} Complete technical design manual and user instructions.
+    \item \textbf{C++ Simulation System:} A functional command-line program dynamically adjusting green timings according to real-time traffic volumes and emergency signals.
+    \item \textbf{Modular Source Code:} A well-commented and structured codebase cleanly implementing Queues, Priority Queues, Stacks, and Graphs.
+    \item \textbf{Comparative Benchmark Report:} Quantitative analysis demonstrating reductions in commuter delay, vehicle idling, and fuel wastage relative to fixed-time signals.
+    \item \textbf{System Documentation:} Technical manual providing software architecture breakdowns and user operational instructions.
 \end{itemize}}
 
 \newpage
-
-% -------------------------------------------------
-% PAGE 4
-% -------------------------------------------------
 
 \blueheading{Assumptions}
 
 \vspace{2mm}
 
-\answerbox[3.4cm]{It is assumed that vehicle counts can be obtained accurately (via simulated sensor input rather than live camera hardware), that all roads at an intersection have comparable lane capacity, that emergency vehicle detection is simulated through a flagged input rather than real sensor hardware, and that environmental factors such as weather and accidents are not modeled in this version.}
+\answerbox{The project development is guided by the following assumptions:
+\begin{itemize}[leftmargin=5mm, itemsep=0.4mm, parsep=0pt, topsep=1.5mm]
+    \item Traffic arrival rates and emergency vehicle flags are supplied via simulation software modules rather than physical camera sensors or radar hardware.
+    \item All intersection lanes have comparable road capacities and uniform clearance rates.
+    \item External road variables such as adverse weather, vehicle accidents, and pedestrian crossings are omitted in this baseline simulation.
+\end{itemize}}
 
-\vspace{10mm}
+\vspace{8mm}
 
 \blueheading{References}
 
 \vspace{2mm}
 
-\answerbox[3.3cm]{
+\answerbox{
 \begin{itemize}[leftmargin=4mm, itemsep=1mm, topsep=0pt]
     \item Data Structures and Algorithms reference: Queues, Priority Queues, Graphs, Stacks, Linked Lists -- \textit{cppreference.com}
     \item General research on adaptive/intelligent traffic signal control systems -- IEEE papers on Intelligent Transportation Systems (ITS)
