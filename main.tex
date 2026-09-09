@@ -21,15 +21,15 @@
 \renewcommand{\arraystretch}{1.0}
 
 \newcommand{\blueheading}[1]{%
-    {\sffamily\color{TitleBlue}\fontsize{15}{18}\selectfont #1}%
+    \par\noindent{\sffamily\color{TitleBlue}\fontsize{15}{18}\selectfont #1}\par
 }
 
 \newcommand{\bluebigheading}[1]{%
-    {\sffamily\bfseries\color{TitleBlue}\fontsize{16}{19}\selectfont #1}%
+    \par\noindent{\sffamily\bfseries\color{TitleBlue}\fontsize{16}{19}\selectfont #1}\par
 }
 
 \newcommand{\answerbox}[1]{%
-    \vspace{2pt}%
+    \par\vspace{2pt}%
     \noindent
     \fbox{%
         \begin{minipage}[t]{\dimexpr\textwidth-2\fboxsep-2\fboxrule\relax}
@@ -38,7 +38,9 @@
             \vspace{2mm}
         \end{minipage}%
     }%
+    \par
 }
+
 \pagestyle{fancy}
 \fancyhf{}
 
@@ -248,7 +250,7 @@ The project will be implemented in C++ using object-oriented programming with cl
 
     \item \textbf{Stack:} Maintains previous signal-state changes so that the recent signal history can be reviewed.
 
-    \item \textbf{Linked List:} Maintains records of vehicles currently crossing or being processed at the intersection.
+    \item \textbf{Linked List:} Maintains records of active vehicles currently crossing or being processed at the intersection.
 
     \item \textbf{Arrays \& Control Loops:} Maintain vehicle counters for different directions and control the main simulation loop.
 
@@ -378,9 +380,13 @@ The deliverables of this project will include:
 
 \end{itemize}
 }
+
 \newpage
+
 \blueheading{Assumptions}
+
 \vspace{2mm}
+
 \answerbox{
 The project is based on the following assumptions:
 \begin{itemize}[
@@ -399,9 +405,13 @@ The project is based on the following assumptions:
     \item The simulation uses simplified vehicle movement rules and is intended to demonstrate the signal-control logic rather than represent all real-world traffic conditions.
 \end{itemize}
 }
-\vspace{8mm}
+
+\vspace{6mm}
+
 \blueheading{References}
+
 \vspace{2mm}
+
 \answerbox{
 \begin{itemize}[
     leftmargin=4mm,
@@ -413,4 +423,5 @@ The project is based on the following assumptions:
     \item \textbf{Intelligent Transportation Systems:} Research papers related to adaptive and intelligent traffic signal control from IEEE publications on Intelligent Transportation Systems (ITS).
 \end{itemize}
 }
+
 \end{document}
