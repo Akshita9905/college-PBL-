@@ -14,6 +14,12 @@
 \usetikzlibrary{arrows.meta,positioning}
 \usepackage{setspace}
 
+% --- Disable all word hyphenation across the entire document ---
+\tolerance=10000
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+\emergencystretch=3em
+
 \definecolor{TitleBlue}{RGB}{61,103,154}
 
 \setlength{\parindent}{0pt}
@@ -174,7 +180,7 @@
 \vspace{2mm}
 
 \answerbox{
-Traffic lights at intersections often use fixed-time settings to control the flow of traffic. This can cause drivers to wait at a red light even when there is little or no traffic coming from the opposite direction, which can increase vehicle idling and traffic jams. Since expanding roads in cities is difficult and expensive, engineers need to find better ways to use the existing road system. An intelligent traffic signal system is needed that can adjust its timing according to the traffic density on different roads and prioritize emergency vehicles.
+You see lights at busy crossings to keep everyone moving smoothly. This can lead to congestion as drivers slow or stop at a red light even when few cars are coming from the opposite side. Expanding cities makes fiscally challenging to expand roadways. Urban planners and engineers must optimize the current infrastructure to achieve the most out of it. The traffic signal system should be smart enough to detect the traffic density on various roads and give priority to emergency vehicles.
 }
 
 \vspace{6mm}
@@ -184,11 +190,7 @@ Traffic lights at intersections often use fixed-time settings to control the flo
 \vspace{2mm}
 
 \answerbox{
-Most traffic lights use simple time-based settings to manage traffic without adapting to the traffic density on the roads. Some newer systems use sensors or timers to improve traffic management. These systems mainly optimize traffic at each intersection separately. Modern systems can also use video cameras and artificial intelligence for advanced traffic monitoring and can adjust signal timings dynamically.
-
-\vspace{2mm}
-
-Although these systems can improve traffic conditions, they require additional cameras, sensors, computing equipment, installation, and maintenance. This can make them expensive and difficult to deploy in areas with limited infrastructure. As a result, many traffic signals still use simple time-based settings, which can lead to avoidable traffic jams.
+Most traffic lights just run on basic timers, totally oblivious to the actual line of cars waiting. Sure, some smarter lights use sensors, but they only fix traffic in their own little bubble. The latest high-tech versions even use AI and cameras to change signals on the fly. While that sounds amazing, buying and installing all that extra hardware is just too expensive for most cities. That is why the vast majority of our local lights still rely on old-school timers---and why we constantly get stuck in pointless gridlock.
 }
 
 \vspace{6mm}
@@ -198,7 +200,7 @@ Although these systems can improve traffic conditions, they require additional c
 \vspace{2mm}
 
 \answerbox{
-\textbf{General Goals:} Create a simulation that tracks the number of cars in all lanes to determine traffic density, adjust signal timing dynamically during the simulation, and prioritize emergency vehicles.
+\textbf{General Goals}: Develop a simulation that calculates the number of cars in all lanes to estimate traffic density, changes the signal time accordingly during the simulation, and prioritizes emergency vehicles.
 
 \vspace{2mm}
 
@@ -210,19 +212,12 @@ Although these systems can improve traffic conditions, they require additional c
     parsep=0pt,
     topsep=1mm
 ]
-
-    \item \textbf{Milestone 1:} Complete the simulation code for vehicle arrival input and counting vehicles on each road.
-
-    \item \textbf{Milestone 2:} Complete the algorithm for determining traffic density and road occupancy.
-
-    \item \textbf{Milestone 3:} Develop the signal decision logic using Queues, Priority Queues, and Graphs.
-
-    \item \textbf{Milestone 4:} Create the simulation engine to control the traffic signal system at an intersection.
-
-    \item \textbf{Milestone 5:} Combine all modules using C++ to create a working test system.
-
-    \item \textbf{Milestone 6:} Compare the results of the new system with the fixed-time system.
-
+    \item \textbf{Milestone 1:} Finish the simulation code with car arrival input and counting cars on the roads.
+    \item \textbf{Milestone 2:} Finishing the algorithm that calculates the density of traffic and road occupancy.
+    \item \textbf{Milestone 3:} Developing the algorithm for the signal decision using Queues, Priority Queues, and Graphs.
+    \item \textbf{Milestone 4:} Creating the engine of the simulation for controlling the traffic signal at the road intersection.
+    \item \textbf{Milestone 5:} Connecting all algorithms into a whole system using the C++ programming language for the test system.
+    \item \textbf{Milestone 6:} Comparing the results of the system with a fixed-time system.
 \end{enumerate}
 }
 
@@ -233,7 +228,7 @@ Although these systems can improve traffic conditions, they require additional c
 \vspace{2mm}
 
 \answerbox{
-The project will be implemented in C++ using object-oriented programming with classes such as \textit{TrafficSignal}, \textit{Road}, and \textit{Vehicle}. The main problem-solving techniques used in the project are data structures:
+In C++, the project will be implemented using object-oriented programming and classes such as \textit{TrafficSignal}, \textit{Road}, and \textit{Vehicle}. The problem-solving techniques which will be used in the project include such data structures as:
 
 \begin{itemize}[
     leftmargin=5mm,
@@ -241,19 +236,12 @@ The project will be implemented in C++ using object-oriented programming with cl
     parsep=0pt,
     topsep=1.5mm
 ]
-
-    \item \textbf{Queue (FIFO):} Maintains vehicles waiting in each lane. This ensures that vehicles in a lane are given access to the road in the same order in which they arrive.
-
-    \item \textbf{Priority Queue:} Determines which road should receive the signal based on traffic density and priority, with emergency vehicles receiving higher priority.
-
-    \item \textbf{Graph Structure:} Maintains a representation of the road network, including how different roads connect and where the intersections are located.
-
-    \item \textbf{Stack:} Maintains previous signal-state changes so that the recent signal history can be reviewed.
-
-    \item \textbf{Linked List:} Maintains records of active vehicles currently crossing or being processed at the intersection.
-
-    \item \textbf{Arrays \& Control Loops:} Maintain vehicle counters for different directions and control the main simulation loop.
-
+    \item \textbf{Queue (FIFO):} It stores the vehicles waiting in each lane. It ensures that in each lane the vehicles enter the intersection in the same order as they queued.
+    \item \textbf{Priority Queue:} It helps to decide which road to grant the signal based on the traffic density and priority, giving priority to the emergency vehicles.
+    \item \textbf{Graph Structure:} It stores the roads with intersections.
+    \item \textbf{Stack:} It stores the previous signal-state changes to check recent changes.
+    \item \textbf{Linked List:} It stores the records of active vehicles crossing or being processed at the intersection.
+    \item \textbf{Arrays \& Control Loops:} It contains the counters for the vehicles for different directions and controls the main loop of the simulation.
 \end{itemize}
 }
 
@@ -266,9 +254,7 @@ The project will be implemented in C++ using object-oriented programming with cl
 \noindent
 \fbox{%
     \begin{minipage}[t]{\dimexpr\textwidth-2\fboxsep-2\fboxrule\relax}
-
         \vspace{3mm}
-
         \centering
 
         \begin{tikzpicture}[
@@ -278,9 +264,9 @@ The project will be implemented in C++ using object-oriented programming with cl
                 fill=TitleBlue!10,
                 draw=TitleBlue,
                 align=center,
+                font=\sffamily\small,
                 minimum width=3.1cm,
-                minimum height=1.05cm,
-                font=\sffamily\small
+                minimum height=1.05cm
             },
             ds/.style={
                 draw,
@@ -288,9 +274,9 @@ The project will be implemented in C++ using object-oriented programming with cl
                 rounded corners,
                 fill=gray!5,
                 align=center,
+                font=\sffamily\footnotesize,
                 minimum width=2.6cm,
-                minimum height=0.9cm,
-                font=\sffamily\footnotesize
+                minimum height=0.9cm
             },
             arr/.style={
                 -{Stealth[length=2mm]},
@@ -298,32 +284,17 @@ The project will be implemented in C++ using object-oriented programming with cl
             }
         ]
 
-            \node[box] (input) at (0,4)
-            {Module 1\\Vehicle Input /\\Arrival Simulation};
+            \node[box] (input) at (0,4) {Module 1\\Vehicle Input /\\Arrival Simulation};
+            \node[box] (count) at (4.2,4) {Module 2\\Vehicle Counting};
+            \node[box] (density) at (8.4,4) {Module 3\\Traffic Density\\Calculation};
 
-            \node[box] (count) at (4.2,4)
-            {Module 2\\Vehicle Counting};
+            \node[box] (signal) at (8.4,2) {Module 4\\Signal Timing\\Optimization};
+            \node[box] (sim) at (4.2,2) {Module 5\\Traffic Light\\Simulation};
+            \node[box] (results) at (0,2) {Module 6\\Results \&\\Comparison};
 
-            \node[box] (density) at (8.4,4)
-            {Module 3\\Traffic Density\\Calculation};
-
-            \node[box] (signal) at (8.4,2)
-            {Module 4\\Signal Timing\\Optimization};
-
-            \node[box] (sim) at (4.2,2)
-            {Module 5\\Traffic Light\\Simulation};
-
-            \node[box] (results) at (0,2)
-            {Module 6\\Results \&\\Comparison};
-
-            \node[ds] (graph) at (0,0.3)
-            {Graph\\(Road network)};
-
-            \node[ds] (queue) at (4.2,0.3)
-            {Queue\\(Waiting vehicles\\per road)};
-
-            \node[ds] (pq) at (8.4,0.3)
-            {Priority Queue\\(Road priority)};
+            \node[ds] (graph) at (0,0.3) {Graph\\(Road network)};
+            \node[ds] (queue) at (4.2,0.3) {Queue\\(Waiting vehicles\\per road)};
+            \node[ds] (pq) at (8.4,0.3) {Priority Queue\\(Road priority)};
 
             \draw[arr] (input) -- (count);
             \draw[arr] (count) -- (density);
@@ -340,17 +311,10 @@ The project will be implemented in C++ using object-oriented programming with cl
         \vspace{3mm}
 
         {\itshape\footnotesize
-        Roads and intersections are represented as a \textbf{Graph};
-        vehicles waiting on each road are maintained in a \textbf{Queue};
-        the \textbf{Priority Queue} determines which road gets the green
-        signal based on traffic density and emergency priority.
-        A \textbf{Stack} maintains recent signal-state history, while a
-        \textbf{Linked List} maintains records of active vehicles at the
-        intersection.
+        Roads and intersections can be represented as a Graph; the vehicles waiting to pass on the roads are kept in a Queue; the priority queue helps decide which roads get a green signal considering traffic density and emergencies; a Stack keeps track of the history of signal changes, and a linked list stores the vehicles passing through the intersection.
         }
 
         \vspace{2mm}
-
     \end{minipage}%
 }
 
@@ -361,7 +325,7 @@ The project will be implemented in C++ using object-oriented programming with cl
 \vspace{2mm}
 
 \answerbox{
-The deliverables of this project will include:
+The deliverables of this project will consist of:
 
 \begin{itemize}[
     leftmargin=5mm,
@@ -369,15 +333,10 @@ The deliverables of this project will include:
     parsep=0pt,
     topsep=1.5mm
 ]
-
-    \item \textbf{C++ Simulation System:} A working simulation that can dynamically adjust signal timing according to simulated traffic conditions and emergency vehicles.
-
-    \item \textbf{Modular Source Code:} Clean and structured C++ source code implementing Queues, Priority Queues, Stacks, Graphs, and other required data structures with comments.
-
-    \item \textbf{Comparative Benchmark Report:} A report comparing the dynamic system with the fixed-time system in terms of waiting time, queue length, and vehicle idling.
-
-    \item \textbf{System Documentation:} Documentation describing the system, its modules, data structures, and the process of running the simulation.
-
+    \item \textbf{C++ Simulation:} An implementation able to perform dynamic timing adjustments based on traffic flow observations and emergency vehicles.
+    \item \textbf{Source Code:} The complete C++ program utilizing Queues, Priority Queues, Stacks, and Graphs, fully annotated.
+    \item \textbf{Comparative Report:} A performance evaluation of the dynamic system against a fixed-time baseline (waiting times, queue lengths, idling vehicles).
+    \item \textbf{Documentation:} Comprehensive system overview and setup instructions accompanying the codebase.
 \end{itemize}
 }
 
@@ -388,21 +347,17 @@ The deliverables of this project will include:
 \vspace{2mm}
 
 \answerbox{
-The project is based on the following assumptions:
+The project is based on several assumptions, including:
 \begin{itemize}[
     leftmargin=5mm,
     itemsep=0.8mm,
     parsep=0pt,
     topsep=1.5mm
 ]
-
-    \item Vehicle arrival information and emergency vehicle detection are provided by simulation modules and not by actual cameras or sensors.
-
-    \item All lanes at the intersection are assumed to have similar capacity and can be cleared at approximately the same rate.
-
-    \item The effects of weather, traffic accidents, road construction, and pedestrians crossing are ignored for the scope of this project.
-
-    \item The simulation uses simplified vehicle movement rules and is intended to demonstrate the signal-control logic rather than represent all real-world traffic conditions.
+    \item Information on vehicle arrival and detection of emergency vehicles is retrieved from simulation modules and not actual cameras or sensors.
+    \item All lanes at the intersection are assumed to have equal capacity and are cleared at approximately the same rate.
+    \item Weather, traffic accidents, road construction, and pedestrian crossings are factors that are ignored for the scope of this project.
+    \item The simulation uses simplified vehicle motion models and is intended to illustrate signal-control logic rather than complex vehicle dynamics.
 \end{itemize}
 }
 
@@ -418,9 +373,8 @@ The project is based on the following assumptions:
     itemsep=1mm,
     topsep=0pt
 ]
-    \item \textbf{C++ Reference:} Queues, Priority Queues, Graph-related structures, Stacks, Linked Lists, and other C++ standard-library concepts -- \textit{cppreference.com}.
-
-    \item \textbf{Intelligent Transportation Systems:} Research papers related to adaptive and intelligent traffic signal control from IEEE publications on Intelligent Transportation Systems (ITS).
+    \item \textbf{C++ Reference:} Queues, Priority Queues, Graph-related structures, Stacks, Linked Lists, and other standard library components -- cppreference.com.
+    \item \textbf{Intelligent Transportation Systems:} Research papers on adaptive and intelligent traffic signal control from IEEE ITS publications.
 \end{itemize}
 }
 
